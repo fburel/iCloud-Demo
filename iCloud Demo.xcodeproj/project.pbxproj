@@ -13,6 +13,8 @@
 		0C713A5D1990E73900595297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C713A5B1990E73900595297 /* Main.storyboard */; };
 		0C713A5F1990E73900595297 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C713A5E1990E73900595297 /* Images.xcassets */; };
 		0C713A6B1990E73900595297 /* iCloud_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C713A6A1990E73900595297 /* iCloud_DemoTests.m */; };
+		0C713A771990E99F00595297 /* ICloudService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C713A761990E99F00595297 /* ICloudService.m */; };
+		0C713A7C1990F5FC00595297 /* NoteDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C713A7B1990F5FC00595297 /* NoteDocument.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,11 @@
 		0C713A641990E73900595297 /* iCloud DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iCloud DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C713A691990E73900595297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C713A6A1990E73900595297 /* iCloud_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCloud_DemoTests.m; sourceTree = "<group>"; };
+		0C713A751990E99F00595297 /* ICloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICloudService.h; sourceTree = "<group>"; };
+		0C713A761990E99F00595297 /* ICloudService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICloudService.m; sourceTree = "<group>"; };
+		0C713A791990E9FD00595297 /* iCloud Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iCloud Demo.entitlements"; sourceTree = "<group>"; };
+		0C713A7A1990F5FC00595297 /* NoteDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDocument.h; sourceTree = "<group>"; };
+		0C713A7B1990F5FC00595297 /* NoteDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDocument.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +86,7 @@
 		0C713A501990E73900595297 /* iCloud Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0C713A791990E9FD00595297 /* iCloud Demo.entitlements */,
 				0C713A551990E73900595297 /* AppDelegate.h */,
 				0C713A561990E73900595297 /* AppDelegate.m */,
 				0C713A581990E73900595297 /* ViewController.h */,
@@ -86,6 +94,7 @@
 				0C713A5B1990E73900595297 /* Main.storyboard */,
 				0C713A5E1990E73900595297 /* Images.xcassets */,
 				0C713A511990E73900595297 /* Supporting Files */,
+				0C713A781990E9A300595297 /* ICloud */,
 			);
 			path = "iCloud Demo";
 			sourceTree = "<group>";
@@ -114,6 +123,17 @@
 				0C713A691990E73900595297 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0C713A781990E9A300595297 /* ICloud */ = {
+			isa = PBXGroup;
+			children = (
+				0C713A751990E99F00595297 /* ICloudService.h */,
+				0C713A761990E99F00595297 /* ICloudService.m */,
+				0C713A7A1990F5FC00595297 /* NoteDocument.h */,
+				0C713A7B1990F5FC00595297 /* NoteDocument.m */,
+			);
+			name = ICloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +185,12 @@
 				TargetAttributes = {
 					0C713A4D1990E73900595297 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z9AH4KN35R;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					0C713A631990E73900595297 = {
 						CreatedOnToolsVersion = 6.0;
@@ -218,6 +244,8 @@
 				0C713A5A1990E73900595297 /* ViewController.m in Sources */,
 				0C713A571990E73900595297 /* AppDelegate.m in Sources */,
 				0C713A541990E73900595297 /* main.m in Sources */,
+				0C713A7C1990F5FC00595297 /* NoteDocument.m in Sources */,
+				0C713A771990E99F00595297 /* ICloudService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,9 +360,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "iCloud Demo/iCloud Demo.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iCloud Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -343,9 +376,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "iCloud Demo/iCloud Demo.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iCloud Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -402,6 +440,7 @@
 				0C713A701990E73900595297 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C713A711990E73900595297 /* Build configuration list for PBXNativeTarget "iCloud DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +449,7 @@
 				0C713A731990E73900595297 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
